@@ -7,14 +7,14 @@
     tools:context=".adapter.CourseFragAdapter">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="399dp"
-        android:layout_height="233dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="parent">
+        app:layout_constraintVertical_bias="0.01999998">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:id="@+id/courseSubj_frag"
                 android:layout_width="248dp"
                 android:layout_height="42dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="16dp"
                 android:text="TextView"
                 android:textAlignment="center"
                 android:textColor="@color/white"
@@ -47,18 +47,21 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/courseSubj_frag"
-                app:layout_constraintVertical_bias="0.307" />
+                app:layout_constraintVertical_bias="0.47000003" />
 
             <View
                 android:id="@+id/divider2"
                 android:layout_width="397dp"
                 android:layout_height="1dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="116dp"
                 android:background="?android:attr/listDivider"
+                android:backgroundTint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/courseLect_frag" />
 
             <TextView
                 android:id="@+id/courseDay_frag"
