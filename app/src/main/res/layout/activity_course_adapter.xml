@@ -6,4 +6,143 @@
     android:layout_height="match_parent"
     tools:context=".adapter.CourseAdapter">
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/courseSubj_adap"
+                android:layout_width="248dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/courseLect_adap"
+                android:layout_width="167dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/courseSubj_adap"
+                app:layout_constraintVertical_bias="0.19" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="397dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="116dp"
+                android:background="?android:attr/listDivider"
+                android:backgroundTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/courseLect_adap" />
+
+            <TextView
+                android:id="@+id/courseDay_adap"
+                android:layout_width="113dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:text="-"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/courseStart_adap"
+                android:layout_width="80dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="104dp"
+                android:layout_marginTop="45dp"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="#FBFBFB"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider2"
+                app:layout_constraintVertical_bias="0.03" />
+
+            <TextView
+                android:id="@+id/courseEnd_adap"
+                android:layout_width="85dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="100dp"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="#FBFBFB"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider2"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/img_edit_course_adap"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/button_disabled"
+                android:contentDescription="@string/img"
+                android:padding="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/img_del_course_adap"
+                app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+            <ImageView
+                android:id="@+id/img_del_course_adap"
+                android:layout_width="35dp"
+                android:layout_height="34dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/button_delete"
+                android:contentDescription="@string/img"
+                android:padding="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_baseline_delete_24" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

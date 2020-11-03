@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <ImageView
-        android:id="@+id/img_edit_lect_detail"
+        android:id="@+id/img_edit_course_adap"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginEnd="24dp"
@@ -88,11 +88,11 @@
         android:contentDescription="@string/img"
         android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/img_del_lect_detail"
+        app:layout_constraintEnd_toStartOf="@+id/img_del_course_adap"
         app:srcCompat="@drawable/ic_baseline_edit_24" />
 
     <ImageView
-        android:id="@+id/img_del_lect_detail"
+        android:id="@+id/img_del_course_adap"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginEnd="24dp"

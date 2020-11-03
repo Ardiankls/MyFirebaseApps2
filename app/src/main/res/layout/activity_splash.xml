@@ -27,7 +27,7 @@
         android:layout_marginTop="48dp"
         android:background="#00BB86FC"
         android:text="School Apps"
-        android:textColor="@color/ic_launcher_background"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
