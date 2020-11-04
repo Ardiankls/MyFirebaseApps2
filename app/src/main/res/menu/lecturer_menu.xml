@@ -5,5 +5,6 @@
         android:id="@+id/lecturer_list"
         android:icon="@drawable/ic_baseline_view_list_24"
         android:title="@string/lecturer_list"
+        android:co
         app:showAsAction="ifRoom" />
 </menu>

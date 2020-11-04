@@ -76,6 +76,39 @@ public class CourseFragAdapter extends RecyclerView.Adapter<CourseFragAdapter.Ca
         holder.cvStart.setText(course.getStart());
         holder.cvEnd.setText(course.getEnd());
         holder.cvLecturer.setText(course.getLecturer());
+
+        holder.btn_enroll.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(context)
+                        .setTitle("Confirmation")
+                        .setMessage("Take this " + course.getSubject() + " ?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(final DialogInterface dialogInterface, int i) {
+                                dialog.show();
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        dialog.cancel();
+                                        CheckTime(course);
+
+                                    }
+                                }, 2000);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        })
+                        .create()
+                        .show();
+            }
+        });
     }
     MutableLiveData<Course> courseAdd = new MutableLiveData<>();
     public MutableLiveData<Course> getCourseAdd() {
@@ -87,29 +120,34 @@ public class CourseFragAdapter extends RecyclerView.Adapter<CourseFragAdapter.Ca
         //user input (belum ter enroll)
         final String courseDay = choose.getDay();
         final int courseStart = Integer.parseInt(choose.getStart().replace(":", ""));
+        Log.d("testCourseStart 1", String.valueOf(courseStart));
         final int courseEnd = Integer.parseInt(choose.getEnd().replace(":", ""));
 
         FirebaseDatabase.getInstance().getReference("student").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("courses").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 conflict = false;
+                Log.d("testCourseStart 2", String.valueOf(courseStart));
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                    Course course = childSnapshot.getValue(Course.class);
+                    Course courses = childSnapshot.getValue(Course.class);
 
                     //ambil dr firebase (yg sudah ter enroll)
-                    String crDay = course.getDay();
-                    int crStart = Integer.parseInt(course.getStart().replace(":", ""));
-                    int crEnd = Integer.parseInt(course.getEnd().replace(":", ""));
+                    String cvDay = courses.getDay();
+                    int cvStart = Integer.parseInt(courses.getStart().replace(":", ""));
+                    int cvEnd = Integer.parseInt(courses.getEnd().replace(":", ""));
+
+                    Log.d("testCourseStart 3", String.valueOf(cvStart));
 
                     //ngecek kalau jadwal berada di hari yang sama, dibandingkan dengan yang belum terenroll dengan yg sudah terenroll
-                    if (courseDay.equalsIgnoreCase(crDay)) {
-
+                    if (courseDay.equalsIgnoreCase(cvDay)) {
+                        Log.d("testCourseStart 4", (cvDay)+courseDay);
                         //ngecek kalau jam mulai berada dalam range waktu yang sudah diambil
-                        if (courseStart > crStart && courseStart < crEnd) {
+                        if (courseStart >= cvStart && courseStart < cvEnd) {
                             conflict = true;
+                            Log.d("testCourseStart 5", String.valueOf(cvStart));
                         }
                         //ngecek kalau jam selesai berada dalam range waktu yang sudah diambil
-                        if (courseEnd > crStart && courseEnd < crEnd) {
+                        if (courseEnd > cvStart && courseEnd <= cvEnd) {
                             conflict = true;
                         }
                     }
@@ -166,7 +204,7 @@ public class CourseFragAdapter extends RecyclerView.Adapter<CourseFragAdapter.Ca
         ImageView btn_enroll;
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
-            cvSubject = itemView.findViewById(R.id.courseDay_sched_adap);
+            cvSubject = itemView.findViewById(R.id.courseSubj_sched_adap);
             cvDay = itemView.findViewById(R.id.courseDay_sched_adap);
             cvStart = itemView.findViewById(R.id.courseStart_sched_adap);
             cvEnd = itemView.findViewById(R.id.courseEnd_sched_adap);

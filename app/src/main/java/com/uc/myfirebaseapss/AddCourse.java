@@ -42,8 +42,8 @@ public class AddCourse extends AppCompatActivity implements TextWatcher {
     Dialog dialog;
     Spinner spinner_day, spinner_start, spinner_end, spinner_lecturer;
     TextInputLayout input_subject;
-    String subject = "", day = "", time1="", time2="", start = "", end = "", idlecturer = "", action="";
-    Button button_add_course;
+    String subject = "", day = "", timeS ="", timeE="", start = "", end = "", idlecturer = "", action="";
+    Button btnAddCourse;
     Course course;
     DatabaseReference mDatabase;
     List<String> lecturer_array;
@@ -69,7 +69,7 @@ public class AddCourse extends AppCompatActivity implements TextWatcher {
         spinner_start = findViewById(R.id.spinner_start_course);
         spinner_end = findViewById(R.id.spinner_end_course);
         spinner_lecturer = findViewById(R.id.spinner_lecturer_course);
-        button_add_course =findViewById(R.id.btn_add_course);
+        btnAddCourse =findViewById(R.id.btn_add_course);
 
 
         setSupportActionBar(bar);
@@ -120,6 +120,7 @@ public class AddCourse extends AppCompatActivity implements TextWatcher {
         spinner_start.setAdapter(adapterstart);
 
         spinner_end = findViewById(R.id.spinner_end_course);
+
         spinner_start.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -162,23 +163,22 @@ public class AddCourse extends AppCompatActivity implements TextWatcher {
         action = intent.getStringExtra("action");
         if(action.equalsIgnoreCase("add")){
             getSupportActionBar().setTitle(R.string.addcourse);
-//            toolbar.setTitle("Add Course");
-            button_add_course.setText("Add");
-            button_add_course.setOnClickListener(new View.OnClickListener() {
+            btnAddCourse.setText("Add");
+            btnAddCourse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     subject = input_subject.getEditText().getText().toString().trim();
                     day = spinner_day.getSelectedItem().toString();
-                    time1 = spinner_start.getSelectedItem().toString();
-                    time2 = spinner_end.getSelectedItem().toString();
+                    timeS = spinner_start.getSelectedItem().toString();
+                    timeE = spinner_end.getSelectedItem().toString();
                     idlecturer = spinner_lecturer.getSelectedItem().toString();
-                    addCourse(subject,day,time1,time2,idlecturer);
+                    addCourse(subject,day, timeS, timeE,idlecturer);
                 }
             });
         }else {
             getSupportActionBar().setTitle(R.string.editcourse);
 //            toolbar.setTitle("Edit Course");
-            button_add_course.setText("Edit");
+            btnAddCourse.setText("Edit");
             course = intent.getParcelableExtra("edit_data_course");
 
             input_subject.getEditText().setText(course.getSubject());
@@ -194,21 +194,21 @@ public class AddCourse extends AppCompatActivity implements TextWatcher {
             spinner_end.setSelection(endIndex);
 
 
-            button_add_course.setOnClickListener(new View.OnClickListener() {
+            btnAddCourse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     dialog.show();
                     subject = input_subject.getEditText().getText().toString().trim();
                     day = spinner_day.getSelectedItem().toString();
-                    time1 = spinner_start.getSelectedItem().toString();
-                    time2 = spinner_end.getSelectedItem().toString();
+                    timeS = spinner_start.getSelectedItem().toString();
+                    timeE = spinner_end.getSelectedItem().toString();
                     idlecturer = spinner_lecturer.getSelectedItem().toString();
 
                     Map<String, Object> params = new HashMap<>();
                     params.put("subject", subject);
                     params.put("day", day);
-                    params.put("start", time1);
-                    params.put("end", time2);
+                    params.put("start", timeS);
+                    params.put("end", timeE);
                     params.put("lecturer", idlecturer);
 
                     dbCourse.child(course.getId()).updateChildren(params).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -231,15 +231,12 @@ public class AddCourse extends AppCompatActivity implements TextWatcher {
         }
     }
 
-    public void addCourse(String msubject, String mday, String mtime1, String mtime2, String mlecturer){
+    public void addCourse(String msubject, String mday, String mstimeS, String mtimeE, String mlecturer){
         String mid = mDatabase.child("course").push().getKey();
-        Course course = new Course(mid, msubject, mday, mtime1, mtime2, mlecturer);
+        Course course = new Course(mid, msubject, mday, mstimeS, mtimeE, mlecturer);
         mDatabase.child("course").child(mid).setValue(course).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-//                    Intent intent;
-//                    intent = new Intent(AddCourse.this, StarterActivity.class);
-//                    startActivity(intent);
                 dialog.cancel();
                 Toast.makeText(AddCourse.this, "Add Course Successfully", Toast.LENGTH_SHORT).show();
                 input_subject.getEditText().setText("");
@@ -248,12 +245,12 @@ public class AddCourse extends AppCompatActivity implements TextWatcher {
                 spinner_end.setSelection(0);
                 spinner_lecturer.setSelection(0);
 
-                Log.d("masuk", "hua cry");
+                Log.d("success", "");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d("tidakmasuk", "hua cry");
+                Log.d("nowpe", "");
 
                 Toast.makeText(AddCourse.this, "Unsuccessful", Toast.LENGTH_SHORT).show();
             }
@@ -269,14 +266,14 @@ public class AddCourse extends AppCompatActivity implements TextWatcher {
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         subject = input_subject.getEditText().getText().toString().trim();
         day = spinner_day.getSelectedItem().toString();
-        time1 = spinner_start.getSelectedItem().toString();
-        time2 = spinner_end.getSelectedItem().toString();
+        timeS = spinner_start.getSelectedItem().toString();
+        timeE = spinner_end.getSelectedItem().toString();
         idlecturer = spinner_lecturer.getSelectedItem().toString();
 
         if (!subject.isEmpty()) {
-            button_add_course.setEnabled(true);
+            btnAddCourse.setEnabled(true);
         } else {
-            button_add_course.setEnabled(false);
+            btnAddCourse.setEnabled(false);
         }
     }
 
@@ -383,8 +380,8 @@ public class AddCourse extends AppCompatActivity implements TextWatcher {
                                     Map<String, Object> params = new HashMap<>();
                                     params.put("subject", subject);
                                     params.put("day", day);
-                                    params.put("start", time1);
-                                    params.put("end", time2);
+                                    params.put("start", timeS);
+                                    params.put("end", timeE);
                                     params.put("lecturer", idlecturer);
                                     dbCourse.child(cr.getValue(Course.class).getId()).updateChildren(params).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override

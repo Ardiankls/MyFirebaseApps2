@@ -77,6 +77,7 @@ public class CourseFragment extends Fragment {
         });
         fetchCourseData();
     }
+
     public void fetchCourseData(){
         dbCourse.addValueEventListener(new ValueEventListener() {
             @Override
