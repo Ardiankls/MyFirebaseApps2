@@ -25,7 +25,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".adapter.CourseAdapter"></activity>
+        <activity android:name=".CourseData"></activity>
+        <activity android:name=".adapter.CourseAdapter" />
         <activity android:name=".adapter.CourseFragAdapter" />
         <activity android:name=".adapter.SchedAdapter" />
         <activity android:name=".UserFragment" />

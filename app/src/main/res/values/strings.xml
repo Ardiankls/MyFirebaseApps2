@@ -7,10 +7,12 @@
     <string name="addlecturer">Add Lecturer</string>
     <string name="editlecturer">Edit Lecturer</string>
     <string name="addcourse">Add Course</string>
+    <string name="editcourse">Edit Course</string>
     <string name="regstudent">Register Student</string>
     <string name="loginstudent">Login as Student</string>
     <string name="listcourse">List Course</string>
-    <string name="">Login as Student</string>
+    <string name="coursedata">Data Course</string>
+    <!--    <string name="LoginStud">Login as Student</string>-->
     <string name="version">version 1.0</string>
     <string name="title_activity_student_area">StudentArea</string>
     <!-- Strings used for fragments for navigation -->
@@ -302,6 +304,9 @@
     </string-array>
     <string-array name="jam_end1630">
         <item>17:00:00</item>
+    </string-array>
+    <string-array name="lecturer">
+        <item>testing</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

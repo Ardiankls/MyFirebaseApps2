@@ -51,8 +51,8 @@ public class LecturerDetail extends AppCompatActivity {
         lbl_name = findViewById(R.id.lbl_nama_lect_detail);
         lbl_gender = findViewById(R.id.lbl_gender_lect_detail);
         lbl_expertise = findViewById(R.id.lbl_expertise_lect_detail);
-        btn_edit = findViewById(R.id.img_edit_lect_detail);
-        btn_del = findViewById(R.id.img_del_lect_detail);
+        btn_edit = findViewById(R.id.edit_course_adap);
+        btn_del = findViewById(R.id.del_sched_adap);
         dialog = Glovar.loadingDialog(LecturerDetail.this);
 
         Intent intent = getIntent();

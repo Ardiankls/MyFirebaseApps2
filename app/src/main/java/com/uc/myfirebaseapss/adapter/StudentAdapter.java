@@ -66,7 +66,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.CardView
 
     }
 
-    @SuppressLint("ResourceAsColor")
+
     @Override
     public void onBindViewHolder(@NonNull final StudentAdapter.CardViewViewHolder holder, int position) {
         final Student student = getListStudent().get(position);

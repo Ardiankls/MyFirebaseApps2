@@ -3,25 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".adapter.CourseFragAdapter">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/courseSubj_adap"
+                android:id="@+id/courseSubj_sched_adap"
                 android:layout_width="248dp"
                 android:layout_height="42dp"
                 android:layout_marginTop="16dp"
@@ -35,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/courseLect_adap"
+                android:id="@+id/courseLect_sched_adap"
                 android:layout_width="167dp"
                 android:layout_height="34dp"
                 android:layout_marginTop="8dp"
@@ -46,7 +44,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/divider2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/courseSubj_adap"
+                app:layout_constraintTop_toBottomOf="@+id/courseSubj_sched_adap"
                 app:layout_constraintVertical_bias="0.47000003" />
 
             <View
@@ -60,10 +58,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/courseLect_adap" />
+                app:layout_constraintTop_toBottomOf="@+id/courseLect_sched_adap" />
 
             <TextView
-                android:id="@+id/courseDay_adap"
+                android:id="@+id/courseDay_sched_adap"
                 android:layout_width="113dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="16dp"
@@ -90,7 +88,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/courseStart_adap"
+                android:id="@+id/courseStart_sched_adap"
                 android:layout_width="80dp"
                 android:layout_height="19dp"
                 android:layout_marginStart="104dp"
@@ -104,7 +102,7 @@
                 app:layout_constraintVertical_bias="0.03" />
 
             <TextView
-                android:id="@+id/courseEnd_adap"
+                android:id="@+id/courseEnd_sched_adap"
                 android:layout_width="85dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="64dp"
@@ -116,6 +114,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider2"
                 app:layout_constraintVertical_bias="0.033" />
+
+            <ImageView
+                android:id="@+id/btn_enroll"
+                android:layout_width="50dp"
+                android:layout_height="39dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/colorPrimary"
+                android:src="@drawable/ic_baseline_input_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

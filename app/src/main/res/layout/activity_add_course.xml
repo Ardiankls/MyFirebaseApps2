@@ -8,7 +8,7 @@
     tools:context=".AddCourse">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tb_course"
+        android:id="@+id/tb_coursedata"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -17,6 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/courselist_menu"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:title="@string/addcourse"
         app:titleTextColor="@color/white" />
@@ -29,7 +30,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_selector"
-        android:enabled="false"
         android:text="@string/addcourse"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -47,7 +47,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb_course">
+        app:layout_constraintTop_toBottomOf="@+id/tb_coursedata">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
