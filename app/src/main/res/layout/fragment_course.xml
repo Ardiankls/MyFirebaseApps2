@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#222222"
     android:textAlignment="center"
     tools:context=".fragment.CourseFragment">
 
@@ -22,6 +23,7 @@
         android:layout_height="36dp"
         android:text="@string/noCourse"
         android:textAlignment="center"
+        android:textColor="#F3F1F1"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
