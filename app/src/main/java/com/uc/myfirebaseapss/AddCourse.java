@@ -82,26 +82,7 @@ public class AddCourse extends AppCompatActivity implements TextWatcher {
                 finish();
             }
         });
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        input_subject = findViewById(R.id.input_subject_course);
-//        input_subject.getEditText().addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
+        
 
         spinner_day = findViewById(R.id.spinner_day_course);
         ArrayAdapter<CharSequence> adapterday = ArrayAdapter.createFromResource(AddCourse.this, R.array.day_array, android.R.layout.simple_spinner_item);
@@ -309,7 +290,7 @@ public class AddCourse extends AppCompatActivity implements TextWatcher {
         }
         return super.onOptionsItemSelected(item);
     }
-    
+
     @Override
     public void onBackPressed() {
         Intent intent;
