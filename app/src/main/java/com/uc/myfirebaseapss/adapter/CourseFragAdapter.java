@@ -36,7 +36,6 @@ public class CourseFragAdapter extends RecyclerView.Adapter<CourseFragAdapter.Ca
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     DatabaseReference dbCourse;
-    DatabaseReference dbStudent;
     Course course;
     int pos = 0;
     private ArrayList<Course> listCourse;
@@ -69,7 +68,7 @@ public class CourseFragAdapter extends RecyclerView.Adapter<CourseFragAdapter.Ca
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
-//        ArrayList<Course> finalListCourse = listCourse;
+
 
         holder.cvSubject.setText(course.getSubject());
         holder.cvDay.setText(course.getDay());
@@ -117,7 +116,7 @@ public class CourseFragAdapter extends RecyclerView.Adapter<CourseFragAdapter.Ca
     boolean conflict = false;
     public void CheckTime(final Course choose) {
 
-        //user input (belum ter enroll)
+
         final String courseDay = choose.getDay();
         final int courseStart = Integer.parseInt(choose.getStart().replace(":", ""));
         Log.d("testCourseStart 1", String.valueOf(courseStart));
@@ -131,40 +130,34 @@ public class CourseFragAdapter extends RecyclerView.Adapter<CourseFragAdapter.Ca
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     Course courses = childSnapshot.getValue(Course.class);
 
-                    //ambil dr firebase (yg sudah ter enroll)
+
                     String cvDay = courses.getDay();
                     int cvStart = Integer.parseInt(courses.getStart().replace(":", ""));
                     int cvEnd = Integer.parseInt(courses.getEnd().replace(":", ""));
 
                     Log.d("testCourseStart 3", String.valueOf(cvStart));
 
-                    //ngecek kalau jadwal berada di hari yang sama, dibandingkan dengan yang belum terenroll dengan yg sudah terenroll
                     if (courseDay.equalsIgnoreCase(cvDay)) {
                         Log.d("testCourseStart 4", (cvDay)+courseDay);
-                        //ngecek kalau jam mulai berada dalam range waktu yang sudah diambil
                         if (courseStart >= cvStart && courseStart < cvEnd) {
                             conflict = true;
                             Log.d("testCourseStart 5", String.valueOf(cvStart));
                         }
-                        //ngecek kalau jam selesai berada dalam range waktu yang sudah diambil
                         if (courseEnd > cvStart && courseEnd <= cvEnd) {
                             conflict = true;
                         }
                     }
                 }
                 if (conflict == true){
-                    //klo overlap jadwal
                     Log.d("testConflict", "YASsss");
                 }else {
-                    //klo berhasil dalam hal apapun
                     Log.d("testConflict", "NOOOOO");
                 }
 
                 if (conflict) {
-                    //alertnya jika terjadi conflict
+
                     new AlertDialog.Builder(context)
                             .setTitle("Warning")
-//                            .setIcon(R.drawable.logo2)
                             .setMessage("You cannot take this course, check again your schedule!")
                             .setCancelable(false)
                             .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
@@ -211,8 +204,6 @@ public class CourseFragAdapter extends RecyclerView.Adapter<CourseFragAdapter.Ca
             cvLecturer = itemView.findViewById(R.id.courseLect_sched_adap);
 
             dbCourse = FirebaseDatabase.getInstance().getReference("course");
-//                dbStudent = FirebaseDatabase.getInstance().getReference("student").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("courses");
-
             dbCourse.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {

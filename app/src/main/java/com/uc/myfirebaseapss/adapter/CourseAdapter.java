@@ -85,10 +85,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CardViewVi
         holder.btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                v.startAnimation(klik);
                 new AlertDialog.Builder(context)
                         .setTitle("Confirmation")
-//                        .setIcon(R.drawable.logo2)
                         .setMessage("Are you sure you want to delete  "+course.getSubject()+" ?")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -106,8 +104,6 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CardViewVi
                                                 Intent in = new Intent(context, CourseData.class);
                                                 in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                                 Toast.makeText(context, "Delete success!", Toast.LENGTH_SHORT).show();
-//                                                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(context);
-//                                                context.startActivity(in, options.toBundle());
                                                 context.startActivity(in);
                                                 ((Activity)context).finish();
                                                 dialogInterface.cancel();
